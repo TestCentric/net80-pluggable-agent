@@ -26,13 +26,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{68E72A39
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "choco", "choco", "{7679FD0F-A828-4151-805E-6C662EFBFFE5}"
 	ProjectSection(SolutionItems) = preProject
-		choco\VERIFICATION.txt = choco\VERIFICATION.txt
 		choco\net80-pluggable-agent.nuspec = choco\net80-pluggable-agent.nuspec
+		choco\VERIFICATION.txt = choco\VERIFICATION.txt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net80-agent-launcher", "src\launcher\net80-agent-launcher.csproj", "{3D3B2910-D77C-4BEC-9433-6234A3257802}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net80-pluggable-agent", "src\agent-exe\net80-pluggable-agent.csproj", "{A527285F-5383-483E-972E-8B41FBDE877A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cake", "cake", "{7B695A1B-C3C8-472A-924A-0AFA437C100A}"
+	ProjectSection(SolutionItems) = preProject
+		cake\build-settings.cake = cake\build-settings.cake
+		cake\building.cake = cake\building.cake
+		cake\check-headers.cake = cake\check-headers.cake
+		cake\package-checks.cake = cake\package-checks.cake
+		cake\package-definition.cake = cake\package-definition.cake
+		cake\package-tests.cake = cake\package-tests.cake
+		cake\packaging.cake = cake\packaging.cake
+		cake\publishing.cake = cake\publishing.cake
+		cake\releasing.cake = cake\releasing.cake
+		cake\test-reports.cake = cake\test-reports.cake
+		cake\test-results.cake = cake\test-results.cake
+		cake\testcentric-gui.cake = cake\testcentric-gui.cake
+		cake\testing.cake = cake\testing.cake
+		cake\versioning.cake = cake\versioning.cake
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +117,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{68E72A39-0B0F-47DC-93F3-19E55A9C721C} = {49BC1DFB-828F-49F4-B2B4-752AB470481D}
 		{7679FD0F-A828-4151-805E-6C662EFBFFE5} = {49BC1DFB-828F-49F4-B2B4-752AB470481D}
+		{7B695A1B-C3C8-472A-924A-0AFA437C100A} = {49BC1DFB-828F-49F4-B2B4-752AB470481D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CAB7BD1E-1034-47CD-AA8E-FD4AC034193B}

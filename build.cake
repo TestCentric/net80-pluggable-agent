@@ -2,7 +2,8 @@
 #tool nuget:?package=GitReleaseManager&version=0.12.1
 #tool nuget:?package=TestCentric.GuiRunner&version=2.0.0-alpha7
 
-#load nuget:?package=TestCentric.Cake.Recipe&version=1.0.0-dev00030
+//#load nuget:?package=TestCentric.Cake.Recipe&version=1.0.0-dev00030
+#load cake/build-settings.cake
 
 var target = Argument("target", Argument("t", "Default"));
 
