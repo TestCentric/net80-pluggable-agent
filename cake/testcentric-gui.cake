@@ -24,7 +24,7 @@ public class GuiRunner
 
 	public string PackageId { get; }
 	public string Version { get; }
-	public string InstallPath => _settings.PackageTestDirectory;
+	public string InstallPath => _settings.ToolsDirectory;
 	public string ExecutablePath =>
 		$"{InstallPath}{PackageId}.{Version}/tools/{RUNNER_EXE}";
 	public bool IsInstalled => System.IO.File.Exists(ExecutablePath);

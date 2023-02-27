@@ -4,6 +4,7 @@
 #load "./test-results.cake"
 #load "./test-reports.cake"
 #load "./package-tests.cake"
+#load "./package-tester.cake"
 #load "./testcentric-gui.cake"
 #load "./versioning.cake"
 #load "./building.cake"
@@ -163,10 +164,16 @@ public class BuildSettings
 	public string ChocoDirectory => ProjectDirectory + "choco/";
 	public string PackageDirectory => ProjectDirectory + "package/";
 	public string ZipImageDirectory => PackageDirectory + "zipimage/";
-	public string PackageTestDirectory => ProjectDirectory + "tools/";
+	public string ToolsDirectory => ProjectDirectory + "tools/";
+	// Extension must be in tools because that's where Gui is installed
+	public string PackageTestDirectory => ToolsDirectory;
 	public string ZipTestDirectory => PackageTestDirectory + "zip/";
 	public string NuGetTestDirectory => PackageTestDirectory + "nuget/";
 	public string ChocolateyTestDirectory => PackageTestDirectory + "choco/";
+	public string PackageResultDirectory => PackageDirectory + "results/";
+	public string ZipResultDirectory => PackageResultDirectory + "zip/";
+	public string NuGetResultDirectory => PackageResultDirectory + "nuget/";
+	public string ChocolateyResultDirectory => PackageResultDirectory + "choco/";
 
 	// Files
 	public string SolutionFile { get; set; }

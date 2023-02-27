@@ -62,36 +62,36 @@ var ChocolateyAgentPackage = new ChocolateyPackage(
 		});
 
 var NetCore11PackageTest = new PackageTest(
-	1, "Run mock-assembly.dll targeting .NET Core 1.1", GUI_RUNNER,
-	"tests/netcoreapp1.1/mock-assembly.dll", CommonResult);
+	1, "NetCore11PackageTest", "Run mock-assembly.dll targeting .NET Core 1.1", GUI_RUNNER,
+	"tests/netcoreapp1.1/mock-assembly.dll", MockAssemblyResult);
 
 var NetCore21PackageTest = new PackageTest(
-	1, "Run mock-assembly.dll targeting .NET Core 2.1", GUI_RUNNER,
-	"tests/netcoreapp2.1/mock-assembly.dll", CommonResult);
+	1, "NetCore21PackageTest", "Run mock-assembly.dll targeting .NET Core 2.1", GUI_RUNNER,
+	"tests/netcoreapp2.1/mock-assembly.dll", MockAssemblyResult);
 
 var NetCore31PackageTest = new PackageTest(
-	1, "Run mock-assembly.dll targeting .NET Core 3.1", GUI_RUNNER,
-	"tests/netcoreapp3.1/mock-assembly.dll", CommonResult);
+	1, "NetCore31PackageTest", "Run mock-assembly.dll targeting .NET Core 3.1", GUI_RUNNER,
+	"tests/netcoreapp3.1/mock-assembly.dll", MockAssemblyResult);
 
 var Net50PackageTest = new PackageTest(
-	1, "Run mock-assembly.dll targeting .NET 5.0", GUI_RUNNER,
-	"tests/net5.0/mock-assembly.dll", CommonResult);
+	1, "Net50PackageTest", "Run mock-assembly.dll targeting .NET 5.0", GUI_RUNNER,
+	"tests/net5.0/mock-assembly.dll", MockAssemblyResult);
 
 var Net60PackageTest = new PackageTest(
-	1, "Run mock-assembly.dll targeting .NET 6.0", GUI_RUNNER,
-	"tests/net6.0/mock-assembly.dll", CommonResult);
+	1, "Net60PackageTest", "Run mock-assembly.dll targeting .NET 6.0", GUI_RUNNER,
+	"tests/net6.0/mock-assembly.dll", MockAssemblyResult);
 
 var Net70PackageTest = new PackageTest(
-	1, "Run mock-assembly.dll targeting .NET 7.0", GUI_RUNNER,
-	"tests/net7.0/mock-assembly.dll", CommonResult);
+	1, "Net70PackageTest", "Run mock-assembly.dll targeting .NET 7.0", GUI_RUNNER,
+	"tests/net7.0/mock-assembly.dll", MockAssemblyResult);
 
 var Net80PackageTest = new PackageTest(
-	1, "Run mock-assembly.dll targeting .NET 8.0", GUI_RUNNER,
-	"tests/net8.0/mock-assembly.dll", CommonResult);
+	1, "Net80PackageTest", "Run mock-assembly.dll targeting .NET 8.0", GUI_RUNNER,
+	"tests/net8.0/mock-assembly.dll", MockAssemblyResult);
 
 static readonly string GUI_RUNNER = "tools/TestCentric.GuiRunner.2.0.0-alpha7/tools/testcentric.exe";
 
-ExpectedResult CommonResult => new ExpectedResult("Failed")
+ExpectedResult MockAssemblyResult => new ExpectedResult("Failed")
 {
 	Total = 36,
 	Passed = 23,
