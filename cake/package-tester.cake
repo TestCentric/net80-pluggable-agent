@@ -93,7 +93,7 @@ public abstract class PackageTester
 				DisplayBanner(packageTest.Description);
 				DisplayTestEnvironment(packageTest);
 
-                runner.RunUnattended(packageTest.Arguments + $" --work:{resultDirectory}");
+                runner.RunUnattended(packageTest.Arguments + $" --trace:Debug --work:{resultDirectory}");
 
                 try
                 {

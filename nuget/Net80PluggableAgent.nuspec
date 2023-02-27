@@ -36,5 +36,6 @@
     <file src="../bin/Release/agent/testcentric.engine.core.dll" target="tools/agent" />
 	<file src="../bin/Release/agent/testcentric.engine.metadata.dll" target="tools/agent" />
 	<file src="../bin/Release/agent/testcentric.extensibility.dll" target="tools/agent" />
+	<file src="../bin/Release/agent/Microsoft.Extensions.DependencyModel.dll" target="tools/agent" />
   </files>
 </package>
