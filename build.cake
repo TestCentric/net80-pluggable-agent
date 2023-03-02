@@ -26,7 +26,9 @@ Setup<BuildSettings>((context) =>
 		packages: new PackageDefinition[] { NuGetAgentPackage, ChocolateyAgentPackage },
 		packageTests: new PackageTest[] {
 			NetCore11PackageTest, NetCore21PackageTest, NetCore31PackageTest,
-			Net50PackageTest, Net60PackageTest, Net70PackageTest, Net80PackageTest }
+			Net50PackageTest, Net60PackageTest, Net70PackageTest, Net80PackageTest,
+			AspNetCore31Test, AspNetCore50Test, AspNetCore60Test, AspNetCore70Test, AspNetCore80Test,
+			Net50WindowsFormsTest, Net60WindowsFormsTest, Net70WindowsFormsTest, Net80WindowsFormsTest }
 	);
 
 	Information($"Net80PluggableAgent {settings.Configuration} version {settings.PackageVersion}");
@@ -61,6 +63,13 @@ var ChocolateyAgentPackage = new ChocolateyPackage(
 				"testcentric.engine.metadata.dll", "testcentric.extensibility.dll")
 		});
 
+// Define Package Tests
+//   Level 1 tests are run each time we build the packages
+//   Level 2 tests are run for PRs and when packages will be published
+//   Level 3 tests are run only when publishing a release
+
+// Tests of single assemblies targeting each runtime we support
+
 var NetCore11PackageTest = new PackageTest(
 	1, "NetCore11PackageTest", "Run mock-assembly.dll targeting .NET Core 1.1", GUI_RUNNER,
 	"tests/netcoreapp1.1/mock-assembly.dll", MockAssemblyResult);
@@ -89,6 +98,48 @@ var Net80PackageTest = new PackageTest(
 	1, "Net80PackageTest", "Run mock-assembly.dll targeting .NET 8.0", GUI_RUNNER,
 	"tests/net8.0/mock-assembly.dll", MockAssemblyResult);
 
+// AspNetCore tests
+
+var AspNetCore31Test = new PackageTest(
+	1, "AspNetCore31Test", "Run test using AspNetCore targeting .NET Core 3.1", GUI_RUNNER,
+    "tests/netcoreapp3.1/aspnetcore-test.dll", AspNetCoreResult);
+
+var AspNetCore50Test = new PackageTest(
+	1, "AspNetCore50Test", "Run test using AspNetCore targeting .NET 5.0", GUI_RUNNER,
+    "tests/net5.0/aspnetcore-test.dll", AspNetCoreResult);
+
+var AspNetCore60Test = new PackageTest(
+	1, "AspNetCore60Test", "Run test using AspNetCore targeting .NET 6.0", GUI_RUNNER,
+    "tests/net6.0/aspnetcore-test.dll", AspNetCoreResult);
+
+var AspNetCore70Test = new PackageTest(
+	1, "AspNetCore70Test", "Run test using AspNetCore targeting .NET 7.0", GUI_RUNNER,
+    "tests/net7.0/aspnetcore-test.dll", AspNetCoreResult);
+
+// TODO: Preview installation not being recognized
+var AspNetCore80Test = new PackageTest(
+	1, "AspNetCore80Test", "Run test using AspNetCore targeting .NET 8.0", GUI_RUNNER,
+    "tests/net8.0/aspnetcore-test.dll", AspNetCoreResult);
+
+// Windows Forms Tests
+
+var Net50WindowsFormsTest = new PackageTest(
+	1, "Net50WindowsFormsTest", "Run test using windows forms under .NET 5.0", GUI_RUNNER,
+    "tests/net5.0-windows/windows-forms-test.dll", WindowsFormsResult);
+
+var Net60WindowsFormsTest = new PackageTest(
+	1, "Net60WindowsFormsTest", "Run test using windows forms under .NET 6.0", GUI_RUNNER,
+    "tests/net6.0-windows/windows-forms-test.dll", WindowsFormsResult);
+
+var Net70WindowsFormsTest = new PackageTest(
+	1, "Net70WindowsFormsTest", "Run test using windows forms under .NET 7.0", GUI_RUNNER,
+    "tests/net7.0-windows/windows-forms-test.dll", WindowsFormsResult);
+
+// TODO: Preiew installation not being recognized
+var Net80WindowsFormsTest = new PackageTest(
+	1, "Net80WindowsFormsTest", "Run test using windows forms under .NET 8.0", GUI_RUNNER,
+    "tests/net8.0-windows/windows-forms-test.dll", WindowsFormsResult);
+
 static readonly string GUI_RUNNER = "tools/TestCentric.GuiRunner.2.0.0-alpha7/tools/testcentric.exe";
 
 ExpectedResult MockAssemblyResult => new ExpectedResult("Failed")
@@ -102,6 +153,22 @@ ExpectedResult MockAssemblyResult => new ExpectedResult("Failed")
 	Assemblies = new ExpectedAssemblyResult[]
 	{
 		new ExpectedAssemblyResult("mock-assembly.dll", "Net80AgentLauncher")
+	}
+};
+
+ExpectedResult AspNetCoreResult => new ExpectedResult("Passed")
+{
+	Assemblies = new ExpectedAssemblyResult[]
+	{
+		new ExpectedAssemblyResult("aspnetcore-test.dll", "Net80AgentLauncher")
+	}
+};
+
+ExpectedResult WindowsFormsResult => new ExpectedResult("Passed")
+{
+    Assemblies = new ExpectedAssemblyResult[]
+	{
+		new ExpectedAssemblyResult("windows-forms-test.dll", "Net80AgentLauncher")
 	}
 };
 

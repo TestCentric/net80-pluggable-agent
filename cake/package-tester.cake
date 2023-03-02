@@ -83,13 +83,8 @@ public abstract class PackageTester
 				var resultDirectory = PackageResultDirectory + packageTest.Name + "/";
 				var resultFile = resultDirectory + DEFAULT_TEST_RESULT_FILE;
 				_context.CreateDirectory(resultDirectory);
-
-				// Delete result file ahead of time so we don't mistakenly
-				// read a left-over file from another test run. Leave the
-				// file after the run in case we need it to debug a failure.
-				if (_context.FileExists(resultFile))
-					_context.DeleteFile(resultFile);
-				
+				_context.CleanDirectory(resultDirectory);
+			
 				DisplayBanner(packageTest.Description);
 				DisplayTestEnvironment(packageTest);
 
