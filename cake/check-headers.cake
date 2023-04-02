@@ -20,6 +20,13 @@ private class HeaderCheck
         var Exempted = new List<FilePath>();
         int examined = 0;
 
+        _context.Information("Checking for standard header in all C# files:");
+        _context.Information();
+        foreach(string line in _settings.StandardHeader)
+            _context.Information(line);
+        _context.Information();
+
+
         var sourceFiles = _context.GetFiles(_settings.SourceDirectory + "**/*.cs");
         var exemptFiles = _settings.ExemptFiles;
         foreach (var file in sourceFiles)
