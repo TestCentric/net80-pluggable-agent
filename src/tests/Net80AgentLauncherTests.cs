@@ -97,7 +97,6 @@ namespace TestCentric.Engine.Services
         }
 
         [TestCaseSource(nameof(RUNTIMES))]
-        [Ignore("X86 is not yet supported")]
         public void CreateX86Process(string runtime)
         {
             _package.Settings[TARGET_RUNTIME_FRAMEWORK] = runtime;

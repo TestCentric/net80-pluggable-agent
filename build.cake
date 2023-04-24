@@ -1,8 +1,9 @@
+#tool NuGet.CommandLine&version=6.0.0
 #tool nuget:?package=GitVersion.CommandLine&version=5.6.3
 #tool nuget:?package=GitReleaseManager&version=0.12.1
 
 // Load the recipe
-#load nuget:?package=TestCentric.Cake.Recipe&version=1.0.0-dev00040
+#load nuget:?package=TestCentric.Cake.Recipe&version=1.0.0-dev00043
 // Comment out above line and uncomment below for local tests of recipe changes
 //#load ../TestCentric.Cake.Recipe/recipe/*.cake
 
@@ -24,23 +25,25 @@ BuildSettings.Initialize
 //   Level 2 tests are run for PRs and when packages will be published
 //   Level 3 tests are run only when publishing a release
 
-// Ensure that this agent is not used except for .NET 8.0 tests
+// Ensure that this agent is not used except for .NET 8.0 tests. Since
+// this is the only extension installed, all tests built for .NET 6.0
+// or lower will run using the .NET 6.0 agent.
 
 var NetCore11PackageTest = new PackageTest(
 	1, "NetCore11PackageTest", "Run mock-assembly.dll targeting .NET Core 1.1",
-	"tests/netcoreapp1.1/mock-assembly.dll", MockAssemblyResult("NetCore31AgentLauncher"));
+	"tests/netcoreapp1.1/mock-assembly.dll", MockAssemblyResult("Net60AgentLauncher"));
 
 var NetCore21PackageTest = new PackageTest(
 	1, "NetCore21PackageTest", "Run mock-assembly.dll targeting .NET Core 2.1",
-	"tests/netcoreapp2.1/mock-assembly.dll", MockAssemblyResult("NetCore31AgentLauncher"));
+	"tests/netcoreapp2.1/mock-assembly.dll", MockAssemblyResult("Net60AgentLauncher"));
 
 var NetCore31PackageTest = new PackageTest(
 	1, "NetCore31PackageTest", "Run mock-assembly.dll targeting .NET Core 3.1",
-	"tests/netcoreapp3.1/mock-assembly.dll", MockAssemblyResult("NetCore31AgentLauncher"));
+	"tests/netcoreapp3.1/mock-assembly.dll", MockAssemblyResult("Net60AgentLauncher"));
 
 var Net50PackageTest = new PackageTest(
 	1, "Net50PackageTest", "Run mock-assembly.dll targeting .NET 5.0",
-	"tests/net5.0/mock-assembly.dll", MockAssemblyResult("Net50AgentLauncher"));
+	"tests/net5.0/mock-assembly.dll", MockAssemblyResult("Net60AgentLauncher"));
 
 var Net60PackageTest = new PackageTest(
 	1, "Net60PackageTest", "Run mock-assembly.dll targeting .NET 6.0",
@@ -73,7 +76,7 @@ var NuGetAgentPackage = new NuGetPackage(
 	id: "NUnit.Extension.Net80PluggableAgent",
 	source: "nuget/Net80PluggableAgent.nuspec",
 	basePath: BuildSettings.OutputDirectory,
-	testRunner: new GuiRunner("TestCentric.GuiRunner", "2.0.0-dev00226"),
+	testRunner: new GuiRunner("TestCentric.GuiRunner", "2.0.0-dev00274"),
 	checks: new PackageCheck[] {
 		HasFiles("LICENSE.txt"),
 		HasDirectory("tools").WithFiles("net80-agent-launcher.dll", "nunit.engine.api.dll"),
@@ -87,7 +90,7 @@ var ChocolateyAgentPackage = new ChocolateyPackage(
 	id: "nunit-extension-net80-pluggable-agent",
 	source: "choco/net80-pluggable-agent.nuspec",
 	basePath: BuildSettings.OutputDirectory,
-	testRunner: new GuiRunner("testcentric-gui", "2.0.0-dev00226"),
+	testRunner: new GuiRunner("testcentric-gui", "2.0.0-dev00274"),
 	checks: new PackageCheck[] {
 		HasDirectory("tools").WithFiles("net80-agent-launcher.dll", "nunit.engine.api.dll")
 			.WithFiles("LICENSE.txt", "VERIFICATION.txt"),
