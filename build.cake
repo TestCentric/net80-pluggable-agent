@@ -1,9 +1,7 @@
 #tool NuGet.CommandLine&version=6.0.0
-#tool nuget:?package=GitVersion.CommandLine&version=5.6.3
-#tool nuget:?package=GitReleaseManager&version=0.12.1
 
 // Load the recipe
-#load nuget:?package=TestCentric.Cake.Recipe&version=1.0.0-dev00043
+#load nuget:?package=TestCentric.Cake.Recipe&version=1.0.0
 // Comment out above line and uncomment below for local tests of recipe changes
 //#load ../TestCentric.Cake.Recipe/recipe/*.cake
 
@@ -76,7 +74,7 @@ var NuGetAgentPackage = new NuGetPackage(
 	id: "NUnit.Extension.Net80PluggableAgent",
 	source: "nuget/Net80PluggableAgent.nuspec",
 	basePath: BuildSettings.OutputDirectory,
-	testRunner: new GuiRunner("TestCentric.GuiRunner", "2.0.0-dev00274"),
+	testRunner: new GuiRunner("TestCentric.GuiRunner", "2.0.0-alpha8"),
 	checks: new PackageCheck[] {
 		HasFiles("LICENSE.txt"),
 		HasDirectory("tools").WithFiles("net80-agent-launcher.dll", "nunit.engine.api.dll"),
@@ -90,7 +88,7 @@ var ChocolateyAgentPackage = new ChocolateyPackage(
 	id: "nunit-extension-net80-pluggable-agent",
 	source: "choco/net80-pluggable-agent.nuspec",
 	basePath: BuildSettings.OutputDirectory,
-	testRunner: new GuiRunner("testcentric-gui", "2.0.0-dev00274"),
+	testRunner: new GuiRunner("testcentric-gui", "2.0.0-alpha8"),
 	checks: new PackageCheck[] {
 		HasDirectory("tools").WithFiles("net80-agent-launcher.dll", "nunit.engine.api.dll")
 			.WithFiles("LICENSE.txt", "VERIFICATION.txt"),
@@ -101,13 +99,6 @@ var ChocolateyAgentPackage = new ChocolateyPackage(
 	tests: packageTests);
 
 BuildSettings.Packages.AddRange(new PackageDefinition[] { NuGetAgentPackage, ChocolateyAgentPackage });
-
-Information($"Net80PluggableAgent {BuildSettings.Configuration} version {BuildSettings.PackageVersion}");
-
-if (BuildSystem.IsRunningOnAppVeyor)
-	AppVeyor.UpdateBuildVersion(BuildSettings.PackageVersion + "-" + AppVeyor.Environment.Build.Number);
-
-static readonly string GUI_RUNNER = "tools/TestCentric.GuiRunner.2.0.0-dev00226/tools/testcentric.exe";
 
 ExpectedResult MockAssemblyResult(string expectedAgent) => new ExpectedResult("Failed")
 {
@@ -146,15 +137,6 @@ ExpectedResult WindowsFormsResult(string expectedAgent) => new ExpectedResult("P
 Task("Appveyor")
 	.IsDependentOn("BuildTestAndPackage")
 	.IsDependentOn("Publish");
-
-Task("BuildTestAndPackage")
-	.IsDependentOn("Build")
-	.IsDependentOn("Test")
-	.IsDependentOn("Package");
-
-//Task("Travis")
-//	.IsDependentOn("Build")
-//	.IsDependentOn("Test");
 
 Task("Default")
     .IsDependentOn("Build");
