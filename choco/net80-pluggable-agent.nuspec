@@ -4,24 +4,24 @@
   <metadata>
     <id>nunit-extension-net80-pluggable-agent</id>
     <version>0.0.0</version>
-    <title>TestCentric Extension - NetCore21 Pluggable Agent</title>
+    <title>TestCentric Extension - Net80 Pluggable Agent</title>
     <authors>Charlie Poole</authors>
     <owners>Charlie Poole</owners>
     <copyright>Copyright (c) 2021 Charlie Poole</copyright>
     <projectUrl>http://test-centric.org</projectUrl>
-    <licenseUrl>https://raw.githubusercontent.com/TestCentric/netcore21-pluggable-agent/main/LICENSE.txt</licenseUrl>
+    <licenseUrl>https://raw.githubusercontent.com/TestCentric/net80-pluggable-agent/main/LICENSE.txt</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <iconUrl>https://test-centric.org/assets/img/testcentric_128x128.png</iconUrl>
     <language>en-US</language>
-    <projectSourceUrl>https://github.com/Testcentric/netcore21-pluggable-agent</projectSourceUrl>
-    <packageSourceUrl>https://github.com/Testcentric/netcore21-pluggable-agent</packageSourceUrl>
+    <projectSourceUrl>https://github.com/Testcentric/net80-pluggable-agent</projectSourceUrl>
+    <packageSourceUrl>https://github.com/Testcentric/net80-pluggable-agent</packageSourceUrl>
     <docsUrl>https://test-centric.org</docsUrl>
     <mailingListUrl>https://groups.google.com/forum/#!forum/nunit-discuss</mailingListUrl>
-    <bugTrackerUrl>https://github.com/Testcentric/netcore21-pluggable-agent/issues</bugTrackerUrl>
-    <tags>net80-pluggable-agent testcentric nunit extension pluggable agent netcoreapp2.1</tags>
-    <summary>TestCentric Engine extension for running tests under .NET Core 2.1</summary>
-    <description>This extension allow the TestCentric GUI to run tests under the .NET Core 2.1 runtime.</description>
-    <releaseNotes>https://raw.githubusercontent.com/TestCentric/netcore21-pluggable-agent/master/CHANGES.txt</releaseNotes>
+    <bugTrackerUrl>https://github.com/Testcentric/net80-pluggable-agent/issues</bugTrackerUrl>
+    <tags>net80-pluggable-agent testcentric nunit extension pluggable agent net8.0</tags>
+    <summary>TestCentric Engine extension for running tests under .NET 8.0</summary>
+    <description>This extension allow the TestCentric GUI to run tests under the .NET 8.0 runtime.</description>
+    <releaseNotes>https://raw.githubusercontent.com/TestCentric/net80-pluggable-agent/master/CHANGES.txt</releaseNotes>
   </metadata>
   <files>
     <file src="../testcentric.png" />

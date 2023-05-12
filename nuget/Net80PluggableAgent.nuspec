@@ -4,20 +4,20 @@
   <metadata>
     <id>NUnit.Extension.Net80PluggableAgent</id>
     <version>0.0.0</version>
-    <title>TestCentric Extension- NetCore21 Pluggable Agent</title>
+    <title>TestCentric Extension- Net80 Pluggable Agent</title>
     <authors>Charlie Poole</authors>
     <owners>Charlie Poole</owners>
     <copyright>Copyright (c) 2021 Charlie Poole</copyright>
     <projectUrl>http://test-centric.org</projectUrl>
     <license type="expression">MIT</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <repository type="git" url="https://github.com/TestCentric/netcore21-pluggable-agent"/>
+    <repository type="git" url="https://github.com/TestCentric/net80-pluggable-agent"/>
     <iconUrl>https://test-centric.org/assets/img/testcentric_128x128.png</iconUrl>
     <icon>testcentric.png</icon>
     <language>en-US</language>
-    <tags>testcentric nunit gui runner agent net80</tags>
+    <tags>testcentric nunit gui runner agent net8.0</tags>
     <summary>TestCentric Engine extension for running tests under .NET 8.0</summary>
-    <description>This extension allow the TestCentric GUI to run tests under the .NET Core 2.1 runtime.</description>
+    <description>This extension allow the TestCentric GUI to run tests under the .NET 8.0 runtime.</description>
     <releaseNotes>https://raw.githubusercontent.com/TestCentric/net80-pluggable-agent/master/CHANGES.txt</releaseNotes>
   </metadata>
   <files>
