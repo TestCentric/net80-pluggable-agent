@@ -74,7 +74,7 @@ var NuGetAgentPackage = new NuGetPackage(
 	id: "NUnit.Extension.Net80PluggableAgent",
 	source: "nuget/Net80PluggableAgent.nuspec",
 	basePath: BuildSettings.OutputDirectory,
-	testRunner: new GuiRunner("TestCentric.GuiRunner", "2.0.0-alpha8"),
+	testRunner: new GuiRunner("TestCentric.GuiRunner", "2.0.0-beta1"),
 	checks: new PackageCheck[] {
 		HasFiles("LICENSE.txt"),
 		HasDirectory("tools").WithFiles("net80-agent-launcher.dll", "nunit.engine.api.dll"),
@@ -88,7 +88,7 @@ var ChocolateyAgentPackage = new ChocolateyPackage(
 	id: "nunit-extension-net80-pluggable-agent",
 	source: "choco/net80-pluggable-agent.nuspec",
 	basePath: BuildSettings.OutputDirectory,
-	testRunner: new GuiRunner("testcentric-gui", "2.0.0-alpha8"),
+	testRunner: new GuiRunner("testcentric-gui", "2.0.0-beta1"),
 	checks: new PackageCheck[] {
 		HasDirectory("tools").WithFiles("net80-agent-launcher.dll", "nunit.engine.api.dll")
 			.WithFiles("LICENSE.txt", "VERIFICATION.txt"),
