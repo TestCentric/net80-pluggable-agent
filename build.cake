@@ -1,7 +1,7 @@
 #tool NuGet.CommandLine&version=6.0.0
 
 // Load the recipe
-#load nuget:?package=TestCentric.Cake.Recipe&version=1.0.0
+#load nuget:?package=TestCentric.Cake.Recipe&version=1.0.1-dev00015
 // Comment out above line and uncomment below for local tests of recipe changes
 //#load ../TestCentric.Cake.Recipe/recipe/*.cake
 
@@ -72,8 +72,19 @@ var packageTests = new PackageTest[] {
 
 var NuGetAgentPackage = new NuGetPackage(
 	id: "NUnit.Extension.Net80PluggableAgent",
-	source: "nuget/Net80PluggableAgent.nuspec",
-	basePath: BuildSettings.OutputDirectory,
+	title: "Net80 Pluggable Agent",
+	description: "TestCentric engine extension for running tests under .NET 8.0",
+	tags: new [] { "testcentric", "pluggable", "agent", "net8.0" },
+	packageContent: new PackageContent(
+		new FilePath[] { "../../LICENSE.txt", "../../README.md", "../../testcentric.png" },
+		new DirectoryContent("tools").WithFiles(
+			"net80-agent-launcher.dll", "net80-agent-launcher.pdb",
+			"nunit.engine.api.dll", "testcentric.engine.api.dll"),
+		new DirectoryContent("tools/agent").WithFiles(
+			"agent/net80-pluggable-agent.dll", "agent/net80-pluggable-agent.pdb", "agent/net80-pluggable-agent.dll.config",
+			"agent/net80-pluggable-agent.deps.json", "agent/net80-pluggable-agent.runtimeconfig.json",
+			"agent/nunit.engine.api.dll", "agent/testcentric.engine.core.dll", "agent/testcentric.engine.metadata.dll", "agent/testcentric.extensibility.dll",
+			"agent/Microsoft.Extensions.DependencyModel.dll")),
 	testRunner: new GuiRunner("TestCentric.GuiRunner", "2.0.0-beta1"),
 	checks: new PackageCheck[] {
 		HasFiles("LICENSE.txt"),
@@ -86,8 +97,20 @@ var NuGetAgentPackage = new NuGetPackage(
 
 var ChocolateyAgentPackage = new ChocolateyPackage(
 	id: "nunit-extension-net80-pluggable-agent",
-	source: "choco/net80-pluggable-agent.nuspec",
-	basePath: BuildSettings.OutputDirectory,
+	title: "Net80 Pluggable Agent",
+	description: "TestCentric engine extension for running tests under .NET 8.0",
+	tags: new [] { "testcentric", "pluggable", "agent", "net8.0" },
+	packageContent: new PackageContent(
+		new FilePath[] { "../../testcentric.png" },
+		new DirectoryContent("tools").WithFiles(
+			"../../LICENSE.txt", "../../README.md", "../../VERIFICATION.txt",
+			"net80-agent-launcher.dll", "net80-agent-launcher.pdb",
+			"nunit.engine.api.dll", "testcentric.engine.api.dll"),
+		new DirectoryContent("tools/agent").WithFiles(
+			"agent/net80-pluggable-agent.dll", "agent/net80-pluggable-agent.pdb", "agent/net80-pluggable-agent.dll.config",
+			"agent/net80-pluggable-agent.deps.json", "agent/net80-pluggable-agent.runtimeconfig.json",
+			"agent/nunit.engine.api.dll", "agent/testcentric.engine.core.dll", "agent/testcentric.engine.metadata.dll", "agent/testcentric.extensibility.dll",
+			"agent/Microsoft.Extensions.DependencyModel.dll")),
 	testRunner: new GuiRunner("testcentric-gui", "2.0.0-beta1"),
 	checks: new PackageCheck[] {
 		HasDirectory("tools").WithFiles("net80-agent-launcher.dll", "nunit.engine.api.dll")
