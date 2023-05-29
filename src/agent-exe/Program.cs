@@ -36,7 +36,7 @@ namespace TestCentric.Engine.Agents
 
             LocateAgencyProcess(options.AgencyPid);
 
-            log.Info($".NET Core 2.1 Agent process {pid} starting");
+            log.Info($".NET 8.0 Agent process {pid} starting");
             log.Info($"  AgentId:   {options.AgentId}");
             log.Info($"  AgencyUrl: {options.AgencyUrl}");
 
