@@ -16,7 +16,7 @@ using TestCentric.Engine.Internal;
 
 namespace TestCentric.Engine.Services
 {
-    [Extension]
+    [Extension(Description = "Pluggable agent for running tests under .NET 8.0", EngineVersion = "2.0.0")]
     public class Net80AgentLauncher : IAgentLauncher
     {
         private const string RUNTIME_IDENTIFIER = ".NETCoreApp";
@@ -35,11 +35,24 @@ namespace TestCentric.Engine.Services
             return runtimeSetting.Length > 8 && runtimeSetting.StartsWith("netcore-") && runtimeSetting[8] <= '8';
         }
 
+        public Process CreateProcess(TestPackage package)
+        {
+            return CreateProcess(Guid.Empty, null, package);
+        }
+
         public Process CreateProcess(Guid agentId, string agencyUrl, TestPackage package)
         {
             // Should not be called unless runtime is one we can handle
             if (!CanCreateProcess(package))
                 return null;
+
+            bool runUnderAgency = !string.IsNullOrEmpty(agencyUrl);
+
+            var sb = new StringBuilder();
+            if (runUnderAgency)
+                sb.Append($"--agentId={agentId} --agencyUrl={agencyUrl} --pid={Process.GetCurrentProcess().Id}");
+            else
+                sb.Append(package.FullName);
 
             // Access other package settings
             bool runAsX86 = package.GetSetting("RunAsX86", false);
@@ -48,8 +61,6 @@ namespace TestCentric.Engine.Services
             string traceLevel = package.GetSetting("InternalTraceLevel", "Off");
             bool loadUserProfile = package.GetSetting("LoadUserProfile", false);
             string workDirectory = package.GetSetting("WorkDirectory", string.Empty);
-
-            var sb = new StringBuilder($"--agentId={agentId} --agencyUrl={agencyUrl} --pid={Process.GetCurrentProcess().Id}");
 
             // Set options that need to be in effect before the package
             // is loaded by using the command line.
@@ -60,7 +71,7 @@ namespace TestCentric.Engine.Services
             if (workDirectory != string.Empty)
                 sb.Append($" --work=").EscapeProcessArgument(workDirectory);
 
-            var agentName = "net80-pluggable-agent.dll";
+            var agentName = "net80-agent.dll";
             var agentDir = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "agent");
             var agentPath = Path.Combine(agentDir, agentName);
             var agentArgs = sb.ToString();
@@ -70,7 +81,7 @@ namespace TestCentric.Engine.Services
 
             var startInfo = process.StartInfo;
             startInfo.UseShellExecute = false;
-            startInfo.CreateNoWindow = true;
+            startInfo.CreateNoWindow = runUnderAgency;
             startInfo.WorkingDirectory = Environment.CurrentDirectory;
             startInfo.LoadUserProfile = loadUserProfile;
 

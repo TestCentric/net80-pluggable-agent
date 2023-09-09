@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mock-assembly", "src\mock-a
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net80-agent-launcher", "src\launcher\net80-agent-launcher.csproj", "{3D3B2910-D77C-4BEC-9433-6234A3257802}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net80-pluggable-agent", "src\agent-exe\net80-pluggable-agent.csproj", "{A527285F-5383-483E-972E-8B41FBDE877A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net80-agent", "src\agent-exe\net80-agent.csproj", "{A527285F-5383-483E-972E-8B41FBDE877A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cake", "cake", "{7B695A1B-C3C8-472A-924A-0AFA437C100A}"
 	ProjectSection(SolutionItems) = preProject

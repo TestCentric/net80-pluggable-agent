@@ -17,8 +17,10 @@ namespace TestCentric.Engine.Services
         private static readonly Guid AGENTID = Guid.NewGuid();
         private const string AGENT_URL = "tcp://127.0.0.1:1234/TestAgency";
         private static readonly string REQUIRED_ARGS = $"{AGENT_URL} --pid={Process.GetCurrentProcess().Id}";
-        private const string AGENT_NAME = "net80-pluggable-agent.dll";
+        private const string AGENT_NAME = "net80-agent.dll";
         private static string AGENT_DIR = Path.Combine(TestContext.CurrentContext.TestDirectory, "agent");
+
+        private static string TESTS_DIR = Path.Combine(TestContext.CurrentContext.TestDirectory, "tests");
 
         // Constants used for settings
         private const string TARGET_RUNTIME_FRAMEWORK = "TargetRuntimeFramework";
@@ -170,6 +172,28 @@ namespace TestCentric.Engine.Services
             _package.Settings[LOAD_USER_PROFILE] = true;
             var agentProcess = _launcher.CreateProcess(AGENTID, AGENT_URL, _package);
             Assert.True(agentProcess.StartInfo.LoadUserProfile);
+        }
+
+        [Test]
+        public void ExecuteTestDirectly()
+        {
+            var package = new TestPackage(Path.Combine(TESTS_DIR, "net8.0/mock-assembly.dll"));
+            package.AddSetting("TargetRuntimeFramework", "netcore-8.0");
+
+            Assert.That(_launcher.CanCreateProcess(package));
+            var agentProcess = _launcher.CreateProcess(package);
+            agentProcess.StartInfo.RedirectStandardOutput = true;
+            agentProcess.OutputDataReceived += (sender, e) =>
+            {
+                if (e.Data != null)
+                    Console.WriteLine(e.Data);
+            };
+
+            Console.WriteLine("Launching agent for direct execution");
+            Assert.That(() => agentProcess.Start(), Throws.Nothing);
+            agentProcess.BeginOutputReadLine();
+            Assert.That(agentProcess.WaitForExit(5000), "Agent failed to terminate");
+            Assert.That(agentProcess.ExitCode, Is.EqualTo(0));
         }
     }
 }
