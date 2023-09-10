@@ -48,6 +48,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aspnetcore-test", "src\aspn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "windows-forms-test", "src\windows-forms-test\windows-forms-test.csproj", "{91C5D6AA-B41C-490A-8CC5-9E015A73A122}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net80-agent.tests", "src\agent-tests\net80-agent.tests.csproj", "{38594EF8-4790-4DF2-93CF-E7A73472317D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -130,6 +132,18 @@ Global
 		{91C5D6AA-B41C-490A-8CC5-9E015A73A122}.Release|x64.Build.0 = Release|Any CPU
 		{91C5D6AA-B41C-490A-8CC5-9E015A73A122}.Release|x86.ActiveCfg = Release|Any CPU
 		{91C5D6AA-B41C-490A-8CC5-9E015A73A122}.Release|x86.Build.0 = Release|Any CPU
+		{38594EF8-4790-4DF2-93CF-E7A73472317D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38594EF8-4790-4DF2-93CF-E7A73472317D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38594EF8-4790-4DF2-93CF-E7A73472317D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{38594EF8-4790-4DF2-93CF-E7A73472317D}.Debug|x64.Build.0 = Debug|Any CPU
+		{38594EF8-4790-4DF2-93CF-E7A73472317D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{38594EF8-4790-4DF2-93CF-E7A73472317D}.Debug|x86.Build.0 = Debug|Any CPU
+		{38594EF8-4790-4DF2-93CF-E7A73472317D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38594EF8-4790-4DF2-93CF-E7A73472317D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38594EF8-4790-4DF2-93CF-E7A73472317D}.Release|x64.ActiveCfg = Release|Any CPU
+		{38594EF8-4790-4DF2-93CF-E7A73472317D}.Release|x64.Build.0 = Release|Any CPU
+		{38594EF8-4790-4DF2-93CF-E7A73472317D}.Release|x86.ActiveCfg = Release|Any CPU
+		{38594EF8-4790-4DF2-93CF-E7A73472317D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

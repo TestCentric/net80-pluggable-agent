@@ -3,10 +3,15 @@
 // Licensed under the MIT License. See LICENSE file in root directory.
 // ***********************************************************************
 
-namespace TestCentric.Agents
+using NUnitLite;
+
+namespace TestCentric.agents
 {
-    public class Net80Agent : TestCentricAgent<Net80Agent>
+    class Program
     {
-        public static void Main(string[] args) => TestCentricAgent<Net80Agent>.Execute(args);
+        static int Main(string[] args)
+        {
+            return new AutoRun().Execute(args);
+        }
     }
 }
