@@ -8,7 +8,6 @@ using System.Linq;
 using NUnit.Framework;
 using System.IO;
 using System.Diagnostics;
-using NUnit.Engine;
 
 namespace TestCentric.Engine.Services
 {
@@ -177,7 +176,7 @@ namespace TestCentric.Engine.Services
         [Test]
         public void ExecuteTestDirectly()
         {
-            var package = new TestPackage(Path.Combine(TESTS_DIR, "net8.0/mock-assembly.dll"));
+            var package = new TestPackage(Path.Combine(TESTS_DIR, "net8.0/mock-assembly.dll")).SubPackages[0];
             package.AddSetting("TargetRuntimeFramework", "netcore-8.0");
 
             Assert.That(_launcher.CanCreateProcess(package));

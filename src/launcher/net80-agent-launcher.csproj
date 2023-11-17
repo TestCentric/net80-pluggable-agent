@@ -16,8 +16,8 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="NUnit.Engine.Api" Version="3.16.2" />
-    <PackageReference Include="TestCentric.Engine.Api" Version="2.0.0-dev00001" />
+    <PackageReference Include="TestCentric.Engine.Api" Version="2.0.0-dev00036" />
+	<PackageReference Include="TestCentric.Extensibility.Api" Version="2.0.0" />
   </ItemGroup>
   
 </Project>
