@@ -8,7 +8,6 @@ BuildSettings.Initialize
 	context: Context,
 	title: "Net80PluggableAgent",
 	solutionFile: "net80-pluggable-agent.sln",
-	msbuildAllowPreviewVersion: true,
 	unitTests: "**/*.tests.exe",
 	githubOwner: "TestCentric",
 	githubRepository: "net80-pluggable-agent" 
@@ -53,15 +52,13 @@ var PackageTests = new PackageTest[] {
 		1, "Net70PackageTest", "Run mock-assembly.dll targeting .NET 7.0",
 		"tests/net7.0/mock-assembly.dll", MockAssemblyResult),
 	new PackageTest(
-		1, "Net80PackageTest", "Run mock-assembly.dll targeting .NET 7.0",
+		1, "Net80PackageTest", "Run mock-assembly.dll targeting .NET 8.0",
 		"tests/net8.0/mock-assembly.dll", MockAssemblyResult),
 	new PackageTest(
-		1, $"AspNetCore8.0Test", $"Run test using AspNetCore targeting .NET 7.0",
+		1, $"AspNetCore8.0Test", $"Run test using AspNetCore targeting .NET 8.0",
 		$"tests/net8.0/aspnetcore-test.dll", AspNetCoreResult),
-// Run Windows test for target framework >= 5.0 (7.0 on AppVeyor)
-//if (TargetVersion >= V_6_0 || TargetVersion >= V_5_0 && !BuildSettings.IsRunningOnAppVeyor)
 	new PackageTest(
-		1, "Net80WindowsFormsTest", $"Run test using windows forms under .NET 7.0",
+		1, "Net80WindowsFormsTest", $"Run test using windows forms under .NET 8.0",
 		"tests/net8.0-windows/windows-forms-test.dll", WindowsFormsResult)
 };
 
@@ -81,8 +78,7 @@ BuildSettings.Packages.Add(new NuGetPackage(
 				"agent/net80-agent.deps.json", $"agent/net80-agent.runtimeconfig.json",
 				"agent/testcentric.engine.api.dll", "agent/testcentric.engine.core.dll",
 				"agent/testcentric.engine.metadata.dll", "agent/testcentric.extensibility.dll", "agent/TestCentric.InternalTrace.dll",
-				"agent/testcentric.extensibility.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll",
-				"agent/System.Text.Encodings.Web.dll", "agent/System.Text.Json.dll") ),
+				"agent/testcentric.extensibility.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll") ),
 	testRunner: new AgentRunner(BuildSettings.NuGetTestDirectory + "TestCentric.Extension.net80PluggableAgent." + BuildSettings.PackageVersion + "/tools/agent/net80-agent.dll"),
 	tests: PackageTests) );
 	
@@ -103,8 +99,7 @@ BuildSettings.Packages.Add(new ChocolateyPackage(
 				"agent/net80-agent.deps.json", $"agent/net80-agent.runtimeconfig.json",
 				"agent/testcentric.engine.api.dll", "agent/testcentric.engine.core.dll",
 				"agent/testcentric.engine.metadata.dll", "agent/testcentric.extensibility.dll", "agent/TestCentric.InternalTrace.dll",
-				"agent/testcentric.extensibility.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll",
-				"agent/System.Text.Encodings.Web.dll", "agent/System.Text.Json.dll") ),
+				"agent/testcentric.extensibility.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll") ),
 	testRunner: new AgentRunner(BuildSettings.ChocolateyTestDirectory + "testcentric-extension-net80-pluggable-agent." + BuildSettings.PackageVersion + "/tools/agent/net80-agent.dll"),
 	tests: PackageTests) );
 
