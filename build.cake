@@ -76,9 +76,9 @@ BuildSettings.Packages.Add(new NuGetPackage(
 			new DirectoryContent("tools/agent").WithFiles(
 				"agent/net80-agent.dll", "agent/net80-agent.pdb", "agent/net80-agent.dll.config", "agent/TestCentric.Agent.Core.dll",
 				"agent/net80-agent.deps.json", $"agent/net80-agent.runtimeconfig.json",
-				"agent/testcentric.engine.api.dll", "agent/testcentric.engine.core.dll",
-				"agent/testcentric.engine.metadata.dll", "agent/testcentric.extensibility.dll", "agent/TestCentric.InternalTrace.dll",
-				"agent/testcentric.extensibility.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll") ),
+				"agent/TestCentric.InternalTrace.dll", "agent/testcentric.engine.metadata.dll",
+				"agent/testcentric.extensibility.dll", "agent/testcentric.extensibility.api.dll",
+				"agent/testcentric.engine.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll") ),
 	testRunner: new AgentRunner(BuildSettings.NuGetTestDirectory + "TestCentric.Extension.net80PluggableAgent." + BuildSettings.PackageVersion + "/tools/agent/net80-agent.dll"),
 	tests: PackageTests) );
 	
@@ -97,9 +97,9 @@ BuildSettings.Packages.Add(new ChocolateyPackage(
 			new DirectoryContent("tools/agent").WithFiles(
 				"agent/net80-agent.dll", "agent/net80-agent.pdb", "agent/net80-agent.dll.config", "agent/TestCentric.Agent.Core.dll",
 				"agent/net80-agent.deps.json", $"agent/net80-agent.runtimeconfig.json",
-				"agent/testcentric.engine.api.dll", "agent/testcentric.engine.core.dll",
-				"agent/testcentric.engine.metadata.dll", "agent/testcentric.extensibility.dll", "agent/TestCentric.InternalTrace.dll",
-				"agent/testcentric.extensibility.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll") ),
+				"agent/TestCentric.InternalTrace.dll", "agent/testcentric.engine.metadata.dll",
+				"agent/testcentric.extensibility.dll", "agent/testcentric.extensibility.api.dll",
+				"agent/testcentric.engine.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll") ),
 	testRunner: new AgentRunner(BuildSettings.ChocolateyTestDirectory + "testcentric-extension-net80-pluggable-agent." + BuildSettings.PackageVersion + "/tools/agent/net80-agent.dll"),
 	tests: PackageTests) );
 
