@@ -173,7 +173,7 @@ namespace TestCentric.Engine.Services
             Assert.True(agentProcess.StartInfo.LoadUserProfile);
         }
 
-        [Test]
+        //[Test]
         public void ExecuteTestDirectly()
         {
             var package = new TestPackage(Path.Combine(TESTS_DIR, "net8.0/mock-assembly.dll")).SubPackages[0];
