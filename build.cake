@@ -89,7 +89,7 @@ BuildSettings.Packages.Add(new NuGetPackage(
 	
 BuildSettings.Packages.Add(new ChocolateyPackage(
 	"testcentric-extension-net80-pluggable-agent",
-	title: ".NET 80 Pluggable Agent",
+	title: "TestCentric Extension - .NET 80 Pluggable Agent",
 	description: "TestCentric engine extension for running tests under .NET 8.0",
 	tags: new [] { "testcentric", "pluggable", "agent", "net80" },
 	packageContent: new PackageContent()
