@@ -23,7 +23,7 @@
 		<PackageReference Include="TestCentric.Extensibility" Version="3.0.0" />
 		<PackageReference Include="TestCentric.Metadata" Version="3.0.2" />
 		<PackageReference Include="TestCentric.InternalTrace" Version="1.2.0" />
-		<PackageReference Include="Microsoft.Extensions.DependencyModel" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyModel" Version="8.0.1" />
 	</ItemGroup>
 	
     <ItemGroup>
