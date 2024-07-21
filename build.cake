@@ -1,5 +1,5 @@
 // Load the recipe
-#load nuget:?package=TestCentric.Cake.Recipe&version=1.2.0
+#load nuget:?package=TestCentric.Cake.Recipe&version=1.2.1-dev00010
 // Comment out above line and uncomment below for local tests of recipe changes
 //#load ../TestCentric.Cake.Recipe/recipe/*.cake
 
@@ -84,7 +84,7 @@ BuildSettings.Packages.Add(new NuGetPackage(
 				"agent/TestCentric.InternalTrace.dll", "agent/TestCentric.Metadata.dll",
 				"agent/TestCentric.Extensibility.dll", "agent/TestCentric.Extensibility.Api.dll",
 				"agent/testcentric.engine.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll") ),
-	testRunner: new AgentRunner(BuildSettings.NuGetTestDirectory + "TestCentric.Extension.net80PluggableAgent." + BuildSettings.PackageVersion + "/tools/agent/net80-agent.dll"),
+	testRunner: new AgentRunner(BuildSettings.NuGetTestDirectory + "TestCentric.Extension.Net80PluggableAgent." + BuildSettings.PackageVersion + "/tools/agent/net80-agent.dll"),
 	tests: PackageTests) );
 	
 BuildSettings.Packages.Add(new ChocolateyPackage(
