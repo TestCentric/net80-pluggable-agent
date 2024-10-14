@@ -19,7 +19,7 @@
 	
     <ItemGroup>
 		<PackageReference Include="TestCentric.Agent.Core" Version="2.1.0" />
-		<PackageReference Include="TestCentric.Engine.Api" Version="2.0.0-beta6" />
+		<PackageReference Include="TestCentric.Engine.Api" Version="2.0.0-dev00022" />
 		<PackageReference Include="TestCentric.Extensibility" Version="3.0.2" />
 		<PackageReference Include="TestCentric.Metadata" Version="3.0.3" />
 		<PackageReference Include="TestCentric.InternalTrace" Version="1.2.1" />
