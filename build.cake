@@ -3,6 +3,8 @@
 // Comment out above line and uncomment below for local tests of recipe changes
 //#load ../TestCentric.Cake.Recipe/recipe/*.cake
 
+const string AGENT_NAME = "testcentric-net80-agent";
+
 BuildSettings.Initialize
 (
 	context: Context,
@@ -79,12 +81,12 @@ BuildSettings.Packages.Add(new NuGetPackage(
 				"net80-agent-launcher.dll", "net80-agent-launcher.pdb",
 				"TestCentric.Extensibility.Api.dll", "TestCentric.Engine.Api.dll" ),
 			new DirectoryContent("tools/agent").WithFiles(
-				"agent/net80-agent.dll", "agent/net80-agent.pdb", "agent/net80-agent.dll.config", "agent/TestCentric.Agent.Core.dll",
-				"agent/net80-agent.deps.json", $"agent/net80-agent.runtimeconfig.json",
-				"agent/TestCentric.InternalTrace.dll", "agent/TestCentric.Metadata.dll",
-				"agent/TestCentric.Extensibility.dll", "agent/TestCentric.Extensibility.Api.dll",
-				"agent/testcentric.engine.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll") ),
-	testRunner: new AgentRunner(BuildSettings.NuGetTestDirectory + "TestCentric.Extension.Net80PluggableAgent." + BuildSettings.PackageVersion + "/tools/agent/net80-agent.dll"),
+				$"agent/{AGENT_NAME}.dll", $"agent/{AGENT_NAME}.pdb", $"agent/{AGENT_NAME}.dll.config",
+				$"agent/{AGENT_NAME}.deps.json", $"agent/{AGENT_NAME}.runtimeconfig.json",
+				"agent/TestCentric.InternalTrace.dll", "agent/TestCentric.Metadata.dll", "agent/TestCentric.Agent.Core.dll",
+                "agent/TestCentric.Extensibility.dll", "agent/TestCentric.Extensibility.Api.dll",
+                "agent/testcentric.engine.api.dll", "agent/Microsoft.Extensions.DependencyModel.dll") ),
+	testRunner: new AgentRunner($"{BuildSettings.NuGetTestDirectory}TestCentric.Extension.Net80PluggableAgent.{BuildSettings.PackageVersion}/tools/agent/{AGENT_NAME}.dll"),
 	tests: PackageTests) );
 	
 BuildSettings.Packages.Add(new ChocolateyPackage(
@@ -100,12 +102,12 @@ BuildSettings.Packages.Add(new ChocolateyPackage(
 				"net80-agent-launcher.dll", "net80-agent-launcher.pdb",
 				"TestCentric.Extensibility.Api.dll", "TestCentric.Engine.Api.dll" ),
 			new DirectoryContent("tools/agent").WithFiles(
-				"agent/net80-agent.dll", "agent/net80-agent.pdb", "agent/net80-agent.dll.config", "agent/TestCentric.Agent.Core.dll",
-				"agent/net80-agent.deps.json", $"agent/net80-agent.runtimeconfig.json",
-				"agent/TestCentric.InternalTrace.dll", "agent/TestCentric.Metadata.dll",
-				"agent/TestCentric.Extensibility.dll", "agent/TestCentric.Extensibility.Api.dll",
+				$"agent/{AGENT_NAME}.dll", $"agent/{AGENT_NAME}.pdb", $"agent/{AGENT_NAME}.dll.config",
+				$"agent/{AGENT_NAME}.deps.json", $"agent/{AGENT_NAME}.runtimeconfig.json",
+				"agent/TestCentric.InternalTrace.dll", "agent/TestCentric.Metadata.dll", "agent/TestCentric.Agent.Core.dll",
+                "agent/TestCentric.Extensibility.dll", "agent/TestCentric.Extensibility.Api.dll",
 				"agent/TestCentric.Engine.Api.dll", "agent/Microsoft.Extensions.DependencyModel.dll") ),
-	testRunner: new AgentRunner(BuildSettings.ChocolateyTestDirectory + "testcentric-extension-net80-pluggable-agent." + BuildSettings.PackageVersion + "/tools/agent/net80-agent.dll"),
+	testRunner: new AgentRunner($"{BuildSettings.ChocolateyTestDirectory}testcentric-extension-net80-pluggable-agent.{BuildSettings.PackageVersion}/tools/agent/{AGENT_NAME}.dll"),
 	tests: PackageTests) );
 
 //////////////////////////////////////////////////////////////////////
