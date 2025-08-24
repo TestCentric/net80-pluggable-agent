@@ -3,12 +3,15 @@
   <PropertyGroup>
     <TargetFrameworks>net8.0</TargetFrameworks>
 	<OutputPath>..\..\bin\$(Configuration)\tests\</OutputPath>
-	<OutputType>Library</OutputType>
-	<CheckEolTargetFramework>false</CheckEolTargetFramework>
+	  <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NUnit" Version="4.1.0" />
+    <PackageReference Include="NUnit" Version="$(NUnitVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>

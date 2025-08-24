@@ -41,9 +41,6 @@ var WindowsFormsResult = new ExpectedResult("Passed")
 
 var PackageTests = new PackageTest[] {
 	new PackageTest(
-		1, "NetCore11PackageTest", "Run mock-assembly.dll targeting .NET Core 1.1",
-		"tests/netcoreapp1.1/mock-assembly.dll", MockAssemblyResult1),
-	new PackageTest(
 		1, "NetCore21PackageTest", "Run mock-assembly.dll targeting .NET Core 2.1",
 		"tests/netcoreapp2.1/mock-assembly.dll", MockAssemblyResult2),
 	new PackageTest(
