@@ -16,6 +16,8 @@ using TestCentric.Extensibility;
 namespace TestCentric.Engine.Services
 {
     [Extension(Description = "Pluggable agent for running tests under .NET 8.0", EngineVersion = "2.0.0")]
+    [ExtensionProperty("AgentType", "LocalProcess")]
+    [ExtensionProperty("TargetFramework", ".NETCoreApp,Version=8.0")]
     public class Net80AgentLauncher : IAgentLauncher
     {
         private string AGENT_NAME = "testcentric-net80-agent.dll";
