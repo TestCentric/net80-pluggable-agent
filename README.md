@@ -1,3 +1,5 @@
+## ARCHIVED - Use the NUnit NET 8.0 Pluggable Agent instead.
+
 # NET 8.0 Pluggable Agent
 
 A **pluggable agent** for the TestCentric Gui Runner, capable of running tests under .NET 8.0.
